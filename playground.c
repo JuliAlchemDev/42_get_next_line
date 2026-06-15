@@ -16,7 +16,7 @@ int main(void) {
 */
 
 // Reading text.txt byte by byte 
-
+/*
 int main(void) {
     char buffer[20];
     
@@ -33,6 +33,27 @@ int main(void) {
     close(fd);
     return (0);
 }
+*/
 
+// Reading in chunks of BUFFER_SIZE, writing only bytes_read to avoid garbage
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 9
+#endif
+// gcc -Wall -Wextra -Werror -D BUFFER_SIZE=10 playground.c -o test
+int main(void) {
+    char buffer[BUFFER_SIZE + 1];
+    
+    int fd = open("text.txt", O_RDONLY);
+    int bytes_read = read(fd, buffer, BUFFER_SIZE);
+     
+    while(bytes_read > 0)
+    {
+    write(1, &buffer, bytes_read);
+    bytes_read = read(fd, buffer, BUFFER_SIZE);
+    }
+    close(fd);
+    return (0);
+} // Hello World!%  
 
 
