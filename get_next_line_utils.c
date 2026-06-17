@@ -34,6 +34,23 @@ char *ft_strchr(const char *str, int ch)
     return (NULL);
 }
 
+void *ft_memcpy(void *dst, const void *src, size_t n)
+{
+    unsigned char *d;
+    const char *s;
+    size_t i;
+
+    d = dst;
+    s = src;
+    i = 0;
+    while(i < n)
+    {
+        d[i] = s[i];
+        i++;
+    }
+    return (dst);
+}
+
 char *ft_strjoin(const char *str_1, const char *str_2)
 {
     char *join;
@@ -48,8 +65,8 @@ char *ft_strjoin(const char *str_1, const char *str_2)
     join = malloc(len_1 + len_2 + 1);
     if(!join)
         return (NULL);
-    memcpy(join, str_1, len_1);
-    memcpy(join + len_1, str_2, len_2);
+    ft_memcpy(join, str_1, len_1);
+    ft_memcpy(join + len_1, str_2, len_2);
     join[len_1 + len_2] = '\0';
     return (join);
 }
