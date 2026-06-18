@@ -1,7 +1,24 @@
 #include "get_next_line.h"
 #include <stdio.h> 
 
+char *read_and_save(int fd, char *save)
+{
+    char *chunk;
+    int bytes_read;
 
+    chunk = malloc(BUFFER_SIZE + 1);
+    if(!chunk)
+        return (NULL);
+    bytes_read = read(fd, chunk, BUFFER_SIZE);
+    while(!ft_strchr(save, '\n') && bytes_read > 0) 
+    {
+        chunk[bytes_read] = '\0';
+        save = ft_strjoin(save, chunk);
+        bytes_read = read(fd, chunk, BUFFER_SIZE);
+    }
+    free(chunk);
+    return (save);
+}
 
 char *get_next_line(int fd)
 {
