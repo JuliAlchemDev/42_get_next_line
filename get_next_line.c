@@ -20,6 +20,22 @@ char *read_and_save(int fd, char *save)
     return (save);
 }
 
+char *extract_line(char *saved)
+{
+    char *line;
+    int i;
+
+    i = 0;
+    while(saved[i] && saved[i] != '\n')
+    {
+        i++;
+    }
+    if(saved[i] == '\n')
+        i++;
+    line = ft_substr(saved, 0, i);
+    return (line);
+}
+
 char *get_next_line(int fd)
 {
     static char *save;
@@ -32,10 +48,10 @@ char *get_next_line(int fd)
     if(!save)
         return (NULL);
 
-    // line = extract_line(save);
+    line = extract_line(save);
     // save = update_save(save);
     
-    return (save);
+    return (line);
 }
 
 
