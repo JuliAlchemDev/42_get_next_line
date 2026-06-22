@@ -36,7 +36,7 @@ int main(void) {
 */
 
 // Reading in chunks of BUFFER_SIZE, writing only bytes_read to avoid garbage
-
+/*
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 9
 #endif
@@ -54,6 +54,8 @@ int main(void) {
     }
     close(fd);
     return (0);
-} // Hello World!%  
+}
+*/
+ 
 
 
