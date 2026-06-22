@@ -1,13 +1,13 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h> // mallloc, free, size_t
+# include <stdlib.h> // malloc, free, size_t
 # include <fcntl.h> // O_RDONLY flag
-# include <unistd.h> // read & close
+# include <unistd.h> // read, close
 
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 50
+# define BUFFER_SIZE 42
 #endif
 
 char *get_next_line(int fd);
