@@ -4,16 +4,21 @@
 char *read_and_save(int fd, char *save)
 {
     char *chunk;
+    char *temp;
     int bytes_read;
 
     chunk = malloc(BUFFER_SIZE + 1);
-    if(!chunk)
+    if (!chunk)
         return (NULL);
     bytes_read = read(fd, chunk, BUFFER_SIZE);
-    while(!ft_strchr(save, '\n') && bytes_read > 0) 
+    while(bytes_read > 0) 
     {
         chunk[bytes_read] = '\0';
-        save = ft_strjoin(save, chunk);
+        temp = ft_strjoin(save, chunk);
+        free(save);
+        save = temp;
+        if (!save || ft_strchr(save, '\n'))
+            break ;
         bytes_read = read(fd, chunk, BUFFER_SIZE);
     }
     free(chunk);
@@ -26,14 +31,30 @@ char *extract_line(char *saved)
     int i;
 
     i = 0;
-    while(saved[i] && saved[i] != '\n')
-    {
+   
+    while (saved[i] && saved[i] != '\n')
         i++;
-    }
-    if(saved[i] == '\n')
+    if (saved[i] == '\n')
         i++;
     line = ft_substr(saved, 0, i);
     return (line);
+}
+
+char *update_save(char *saved)
+{
+    char *updated;
+    int i;
+
+    i = 0;
+    while(saved[i] && saved[i] != '\n')
+        i++;
+    if(saved[i] == '\n')
+        i++;
+    if (!saved[i])
+        return (free(saved), NULL);
+    updated = ft_substr(saved, i, ft_strlen(saved) - i);
+    free(saved);
+    return (updated);
 }
 
 char *get_next_line(int fd)
@@ -47,19 +68,20 @@ char *get_next_line(int fd)
     save = read_and_save(fd, save);
     if(!save)
         return (NULL);
-
     line = extract_line(save);
-    // save = update_save(save);
+    save = update_save(save);
     
     return (line);
 }
 
-
+/*
 int main(void){
     int fd = open("text.txt", O_RDONLY);
     char *line;
 
     line = get_next_line(fd);
     printf("Final save: %s", line);
+    free(line);
     return (0);
 }
+*/
