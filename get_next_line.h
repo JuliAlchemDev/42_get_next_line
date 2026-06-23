@@ -17,9 +17,9 @@
 # include <fcntl.h> // O_RDONLY flag
 # include <unistd.h> // read, close
 
-#ifndef BUFFER_SIZE
+# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42
-#endif
+# endif
 
 char	*get_next_line(int fd);
 
