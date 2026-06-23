@@ -6,7 +6,7 @@
 /*   By: iualkhim <iualkhim@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 18:19:33 by iualkhim          #+#    #+#             */
-/*   Updated: 2026/06/22 18:21:29 by iualkhim         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:35:57 by iualkhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h> // read, close
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+#  define BUFFER_SIZE 42
 # endif
 
 char	*get_next_line(int fd);
