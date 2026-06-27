@@ -80,7 +80,7 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=1 main.c get_next_line.c get_next_line_u
 
 ## Demo
 
-<!-- <video src="./assets/demo.mp4" controls type="video/mp4" width="600"></video> -->
+<video src="https://github.com/user-attachments/assets/4211c879-798e-41c0-88e0-b225f1ebd26f" controls type="video/mp4" width="600"></video> 
 
 ## Resources
 
@@ -92,6 +92,9 @@ You can also check my investigation and implementation process in [playground](.
 
 ---
 **AI Usage:** I used [Claude](https://claude.ai) (Anthropic) as an AI augmentation tool throughout my learning process — breaking the project down into smaller parts before coding, discussing architecture and organization decisions, and getting guidance on documentation writing and evaluation preparation.
+
+
+
 
 
 
