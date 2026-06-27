@@ -41,13 +41,16 @@ char	*get_next_line(int fd);
 └───────────────────────────────────────────────────┘
 ```
 
-**1. `read_and_save(fd, save)`** — Feed the buffer  
+**1. `read_and_save(fd, save)`** — Feed the buffer
+
 Reads `BUFFER_SIZE` bytes at a time from `fd` and appends each chunk to `save` via `ft_strjoin`. Stops as soon as a `\n` is found in `save` (checked with `ft_strchr`) or EOF is reached.
 
-**2. `extract_line(save)`** — Carve out the line  
-Scans `save` from the start up to and including the first `\n`, then allocates and returns that slice as the line the caller receives.
+**2. `extract_line(save)`** — Slice out the line
 
-**3. `update_save(save)`** — Keep the remainder  
+Scans `save` from the start up to and including the first `\n`, then allocates and returns that slice as the resulting line.
+
+**3. `update_save(save)`** — Keep the remainder
+
 Trims everything that was just returned from `save`, preserving only what comes after the `\n` for the next call. If nothing remains, returns `NULL` and frees the buffer.
 
 ## Helper Functions (`get_next_line_utils.c`)
@@ -75,13 +78,17 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=1 main.c get_next_line.c get_next_line_u
 
 > A `main.c` and `text.txt` are included in the repo so you can test it right away. You can change `BUFFER_SIZE` to any positive integer to observe different read chunk behaviors.
 
+## Demo
+
+<!-- <video src="./assets/demo.mp4" controls type="video/mp4" width="600"></video> -->
+
 ## Resources
 
-Static Variables in C -> [GeeksForGeeks](https://www.geeksforgeeks.org/c/static-variables-in-c/) 
+Static Variables in C -> [GeeksForGeeks](https://www.geeksforgeeks.org/c/static-variables-in-c/)
 
-Input-output system calls -> [GeeksForGeeks](https://www.geeksforgeeks.org/c/input-output-system-calls-c-create-open-close-read-write/) 
+Input-output system calls -> [GeeksForGeeks](https://www.geeksforgeeks.org/c/input-output-system-calls-c-create-open-close-read-write/)
 
-You can also check my investigation and implementation process in [playground](./playground.c) 
+You can also check my investigation and implementation process in [playground](./playground.c)
 
 ---
 **AI Usage:** I used [Claude](https://claude.ai) (Anthropic) as an AI augmentation tool throughout my learning process — breaking the project down into smaller parts before coding, discussing architecture and organization decisions, and getting guidance on documentation writing and evaluation preparation.

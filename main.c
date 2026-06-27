@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-#include <stdio.h> 
+#include <stdio.h>
 
 #define CYAN   "\033[36m"
 #define VIOLET   "\033[94m"
@@ -10,7 +10,7 @@
 #define PURPLE      "\033[1m"
 #define RESET     "\033[0m"
 
-// gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1 main.c get_next_line.c get_next_line_utils.c -o test 
+// gcc -Wall -Wextra -Werror -D BUFFER_SIZE=1 main.c get_next_line.c get_next_line_utils.c -o test
 // ./test
 // ./test text_1.txt
 // ./test text.txt
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 {
     int fd;
     char *line;
-    
+
     if(argc < 2)
     {
         print_slow("Adjust text file to execute program,\n", VIOLET);
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
     {
-        print_slow("Oh no!\n", PINK);
+        print_slow("Whoops!\n", PINK);
         printf(PEACH "       @_@" RESET);
         print_slow("\nSomething went wrong. Try again!\n", PINK);
         return (1);
@@ -52,13 +52,13 @@ int main(int argc, char **argv)
     while ((line = get_next_line(fd)) != NULL)
     {
         printf(CYAN "%s" RESET, line);
-        fflush(stdout); 
-        usleep(300000);       
+        fflush(stdout);
+        usleep(300000);
         free(line);
     }
     usleep(300000);
     print_slow("\n\nTa-da! ", VIOLET);
     printf(PEACH "\\(^-^)/\n" RESET);
     close(fd);
-    return (0);    
+    return (0);
 }
